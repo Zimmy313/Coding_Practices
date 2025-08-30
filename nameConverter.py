@@ -23,6 +23,6 @@ def converter(name: str, suffix: str) -> str:
 
 if __name__ == "__main__":
     print(converter(
-        name = '295. Find Median from Data Stream',
+        name = '73. Set Matrix Zeroes',
         suffix = "py"
     ))
