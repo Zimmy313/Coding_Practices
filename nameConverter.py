@@ -23,6 +23,6 @@ def converter(name: str, suffix: str) -> str:
 
 if __name__ == "__main__":
     print(converter(
-        name = '73. Set Matrix Zeroes',
-        suffix = "py"
+        name = '619. Biggest Single Number',
+        suffix = "sql"
     ))
