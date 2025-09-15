@@ -23,6 +23,6 @@ def converter(name: str, suffix: str) -> str:
 
 if __name__ == "__main__":
     print(converter(
-        name = '1045. Customers Who Bought All Products',
+        name = '211. Design Add and Search Words Data Structure',
         suffix = "py"
     ))
