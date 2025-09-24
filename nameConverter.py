@@ -23,6 +23,6 @@ def converter(name: str, suffix: str) -> str:
 
 if __name__ == "__main__":
     print(converter(
-        name = '27. Remove Element',
+        name = '125. Valid Palindrome',
         suffix = "c"
     ))
