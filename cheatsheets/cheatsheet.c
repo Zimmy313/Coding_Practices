@@ -7,6 +7,7 @@ C Common Functions & Formatting Cheat Sheet
 #include <stdio.h>   
 #include <ctype.h>  
 #include <math.h>  
+#include <string.h>
 
 // =====================================
 // ctype.h
@@ -18,6 +19,36 @@ void ctype_demo() {
     printf("tolower: %c\n", tolower(c));
     printf("toupper: %c\n", toupper('b'));
     printf("isspace: %d\n", isspace(' '));
+}
+
+// =====================================
+// string.h
+// =====================================
+void string_demo() {
+    char s1[50] = "Hello";
+    char s2[] = "World";
+
+    printf("strlen: %zu\n", strlen(s1));                // length
+    strcpy(s1, "New");                                  // copy
+    strcat(s1, " Text");                                // concatenate
+    printf("strcpy+strcat: %s\n", s1);
+
+    printf("strcmp: %d\n", strcmp("abc","abd"));        // compare
+    printf("strncmp(abc,abd,2): %d\n", strncmp("abc","abd",2));
+
+    char *p = strstr("leetleetcode", "leet");           // substring
+    if (p) printf("strstr index: %ld\n", p - "leetleetcode");
+
+    p = strchr("LeetCode", 'C');                        // first char
+    if (p) printf("strchr index: %ld\n", p - "LeetCode");
+
+    char buf[10] = "12345";
+    memset(buf, 'X', 3);                                // fill memory
+    printf("memset: %s\n", buf);
+
+    char dst[10];
+    memcpy(dst, "ABCDE", 6);                            // copy memory
+    printf("memcpy: %s\n", dst);
 }
 
 // =====================================
