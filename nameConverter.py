@@ -23,6 +23,6 @@ def converter(name: str, suffix: str) -> str:
 
 if __name__ == "__main__":
     print(converter(
-        name = '1164. Product Price at a Given Date',
-        suffix = "sql"
+        name = '1768. Merge Strings Alternately',
+        suffix = "py"
     ))

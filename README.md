@@ -6,6 +6,7 @@ I primarily work with:
 - **SQL** – for database query problems  
 - **Python** – for algorithms and data manipulation using **pandas**  
 - **C** – for low-level, performance-focused problems  
+- **CPP**
 
 ## Update Schedule
 The repository is **usually updated weekly** with new solutions and improvements.
