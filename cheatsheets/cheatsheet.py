@@ -131,3 +131,9 @@ from itertools import permutations, combinations, product
 list(permutations([1, 2, 3]))         # All permutations
 list(combinations([1, 2, 3], 2))      # All 2-element combinations
 list(product([0, 1], repeat=3))       # Cartesian product
+
+# =====================================
+# I/O
+# =====================================
+
+input() # parse keyboard input as string.

@@ -23,6 +23,6 @@ def converter(name: str, suffix: str) -> str:
 
 if __name__ == "__main__":
     print(converter(
-        name = '1768. Merge Strings Alternately',
+        name = '1071. Greatest Common Divisor of Strings',
         suffix = "py"
     ))
