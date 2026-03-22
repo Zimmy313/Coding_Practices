@@ -17,7 +17,7 @@ s.strip()             # Remove leading and trailing whitespace
 s.lstrip()            # Remove leading whitespace
 s.rstrip()            # Remove trailing whitespace
 s.split()             # Split string by whitespace -> ['LeetCode123']
-s.split(',')          # Split string by a specific delimiter
+s.split(',')          # Split string by a specific delimiter. return a list of strings
 ",".join(["a", "b"])  # Join list into a string -> "a,b"
 s.find("e")           # Return index of first occurrence -> 1
 s.rfind("e")          # Return index of last occurrence -> 2
@@ -135,5 +135,12 @@ list(product([0, 1], repeat=3))       # Cartesian product
 # =====================================
 # I/O
 # =====================================
+import sys
 
-input() # parse keyboard input as string.
+input() # reads one line as a string. no need sys
+n = map()  # applied a specified function for each item in an iterable. 
+#e.g. map(int, input()). Return a map object. need to wrap with list() to convert to interable
+
+line = sys.stdin.readline() # reads one line, keeps trailing \n
+text = sys.stdin.read()     # reads everything until EOF
+lines = sys.stdin.readlines() # reads all lines into a list

@@ -23,6 +23,6 @@ def converter(name: str, suffix: str) -> str:
 
 if __name__ == "__main__":
     print(converter(
-        name = '1071. Greatest Common Divisor of Strings',
+        name = '1431. Kids With the Greatest Number of Candies',
         suffix = "py"
     ))
