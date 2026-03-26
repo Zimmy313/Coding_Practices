@@ -23,6 +23,6 @@ def converter(name: str, suffix: str) -> str:
 
 if __name__ == "__main__":
     print(converter(
-        name = '1431. Kids With the Greatest Number of Candies',
-        suffix = "py"
+        name = '392. Is Subsequence',
+        suffix = "cpp"
     ))
