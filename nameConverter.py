@@ -22,7 +22,9 @@ def converter(name: str, suffix: str) -> str:
     return filename
 
 if __name__ == "__main__":
-    print(converter(
-        name = '392. Is Subsequence',
-        suffix = "cpp"
-    ))
+    print("Please enter name of question:")
+    name = input()
+    print("Please enter the suffix of the question:")
+    suffix = input()
+    
+    print(converter(name,suffix))

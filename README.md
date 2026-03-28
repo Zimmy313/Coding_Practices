@@ -16,7 +16,8 @@ Each folder is organized by language and problem type:
 
 - `Python/`     → Algorithm and Pandas solutions in Python  
 - `C/`          → Algorithm solutions in C 
+- `Cpp/`        → Algorithm solutions in Cpp 
 - `SQL/`        → SQL query solutions 
 - `Revise/`     → Interesting or tricky questions I plan to revisit  
-- `cheatsheet/` → Quick-reference files for **C**, **Python**, and **SQL** built-in/common functions  
+- `cheatsheet/` → Quick-reference files for **C**, **Cpp**, **Python**, and **SQL** built-in/common functions  
 - `nameConverter.py` → Helper script for file naming  
