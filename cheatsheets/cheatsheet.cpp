@@ -12,16 +12,21 @@ using namespace std; // lets you write cout, cin, string without std::
 void demo_string() {
 
     // illustrate I/O
-    string s, t;
+    string s, t, temp;
     cout << "Please input string s:\n";
-    cin >> s;
+    cin >> s; // note that this only takes in the first input
     cout << "Please input string t:\n";
-    cin >> t;
+    getline(cin, t); // gets the entire line
 
     // playing with string
     cout << s.size() << "\n";
     cout << (s == t) << "\n"; // () is important due to precedence rule. Compare the 2 string using '==' directly
     cout << (s.find("a") != string::npos) << "\n"; // returns the first occurance of the character. npos is a static member constatn to indicate an invalid or "no position" result
+
+    temp = s + t; // result is equal to s+= t 
+    temp.push_back('c'); // needs a single character.
+    temp.clear(); // temp is now ""
+
 
 }
 
@@ -42,6 +47,9 @@ void demo_vector() {
 int main(){
     demo_string();
     demo_vector();
+
+    cout << endl; // flush the output, this may slow down process. not necessary.
+    cout << '\n' << flush; // same as above
     
     return 0;
 }
