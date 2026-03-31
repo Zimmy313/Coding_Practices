@@ -236,6 +236,90 @@ git push
 git pull
 ```
 
----
+## Additional Git Command Blocks
 
-This is enough for ~95% of real-world workflows.
+### Logs and History
+
+```bash
+git log --oneline
+git log --graph --decorate --all
+```
+
+- `--oneline`: compact commit history.
+- `--graph --decorate --all`: visual branch/merge graph with refs.
+
+### Staging and Committing
+
+```bash
+git add file.py
+git add .
+git commit -m "message"
+git commit -a -m "message"
+git commit --amend
+```
+
+- `git add file.py`: stage one file.
+- `git add .`: stage all changes under current directory.
+- `git commit -a -m "message"`: auto-stage tracked files only.
+- `git commit --amend`: rewrite the latest commit (message and/or content).
+
+### Branching and Switching
+
+```bash
+git branch
+git branch -a
+git branch branch_name
+git switch branch_name
+git checkout branch_name
+git branch -d branch_name
+git branch -D branch_name
+```
+
+- `git branch -a`: include remote-tracking branches.
+- `git branch branch_name`: create new branch.
+- `git switch` / `git checkout`: move to branch.
+- `git branch -d`: delete branch (safe).
+- `git branch -D`: force-delete branch.
+
+### Remote, Fetch, Pull, Push
+
+```bash
+git remote -v
+git fetch
+git fetch origin
+git pull --rebase
+git push origin main
+```
+
+- `git remote -v`: show remote URLs.
+- `git fetch`: download remote updates without merging.
+- `git fetch origin`: update remote-tracking branches from `origin`.
+- `git push origin main`: push local `main` to `origin/main`.
+
+### Restore and Unstage
+
+```bash
+git restore file.py
+git restore --staged file.py
+```
+
+- `git restore file.py`: discard local working-tree changes in file.
+- `git restore --staged file.py`: unstage file.
+
+### Stash Workflow (Temporary Local Work)
+
+```bash
+git stash push -m "WIP: ASSAIA notebook"
+git pull
+git stash pop
+```
+
+- Use when you have temporary changes you do not want to commit yet.
+
+### Merging
+
+```bash
+git merge --no-ff branch_name
+```
+
+- `--no-ff`: always create a merge commit (keeps branch history explicit).

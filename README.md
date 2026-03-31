@@ -1,31 +1,38 @@
-# Cheatsheets
+# Notes
 
-This repository stores my learning notes and code-heavy cheat sheets in Markdown.
+This repo is for my self-learning: collecting practical notes and snippets, with the option to publish parts on my own website later.
 
-## Structure
+## Folder Structure (Non-Ignored)
 
 ```text
 .
 ├── README.md
-├── AGENTS.md
-├── archive/
-└── C/
-    ├── headers.md
-    ├── pointers.md
-    ├── shared-memory.md
-    └── typedef-struct.md
+├── C/
+│   ├── headers.md
+│   ├── main.md
+│   ├── pointers.md
+│   ├── shared_memory.md
+│   └── typedef_struct.md
+├── Cpp/
+│   └── main.md
+├── deep_RL/
+│   ├── MDP.md
+│   ├── RLHF.md
+│   └── main.md
+├── figs/
+│   ├── RLHF.png
+│   ├── css_boxmodel.png
+│   ├── css_syntax.png
+│   └── html_strucutre.png
+├── frontend/
+│   ├── css.md
+│   └── html.md
+├── python/
+│   └── decorator.md
+└── tools/
+    ├── clt.md
+    ├── git.md
+    ├── nano.md
+    ├── ssh.md
+    └── vim.md
 ```
-
-## Organization Rules
-
-- Each programming language gets its own top-level folder (for example: `C/`, `Python/`, `Cpp/`).
-- Notes are written in Markdown (`.md`) by default.
-- Inside each language folder, files are grouped by topic.
-- Keep examples practical: include what an API does, key arguments, and end-to-end usage flow.
-
-## Current Focus
-
-- `C/headers.md`: quick reference for important C/POSIX headers.
-- `C/shared-memory.md`: System V shared memory (`shmget`, `shmat`, `shmdt`, `shmctl`) and usage flow.
-- `C/typedef-struct.md`: practical syntax patterns and common pitfalls for `typedef struct`.
-- `C/pointers.md`: comprehensive pointer reference (`*`, `**`, arrays, function pointers, memory/lifetime pitfalls).
