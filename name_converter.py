@@ -22,9 +22,9 @@ def converter(name: str, suffix: str) -> str:
     return filename
 
 if __name__ == "__main__":
-    print("Please enter name of question:")
-    name = input()
-    print("Please enter the suffix of the question:")
-    suffix = input()
+    name = input("Please enter name of question:")
+    # print("Please enter the suffix of the question:")
+    # suffix = input()
+    suffix = "py"
     
     print(converter(name,suffix))

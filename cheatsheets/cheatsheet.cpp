@@ -7,12 +7,15 @@ Cpp Common Functions & Formatting Cheat Sheet
 #include <string>
 #include <iostream>
 #include <vector>
+#include <unordered_map>
+#include <unordered_set>
 using namespace std; // lets you write cout, cin, string without std::
 
 void demo_string() {
+    string s, t, temp;
+    char yolo;
 
     // illustrate I/O
-    string s, t, temp;
     cout << "Please input string s:\n";
     cin >> s; // note that this only takes in the first input
     cout << "Please input string t:\n";
@@ -27,6 +30,7 @@ void demo_string() {
     temp.push_back('c'); // needs a single character.
     temp.clear(); // temp is now ""
 
+    yolo = s[0]; // no need casting. can use index deirectly
 
 }
 
@@ -44,9 +48,50 @@ void demo_vector() {
     cout << v.size() << "\n";
 }
 
+void demo_hashmaps(void) {
+    // unordered_map and unordered_set are hash-table based.
+    // Average lookup: O(1)
+    // Worst-case lookup: O(n)
+
+    unordered_map<string, int> student = {{"Bob", 1}, {"John", 2}};
+
+    cout << student["Bob"]; 
+    // You CAN use [] with unordered_map.
+    // Key point: student["Bob"] accesses value by key, not by position/index.
+    // student[0] does not mean first element.
+    // note that accees by key will create the pair if not exist. use find instead if you dont want to create it. 
+
+    student.insert({"Mike", 100});
+    student["Alice"]; // creates Alice with default value
+
+    // updating
+    student.at("Mike") = 10000;
+    student["Mike"] = 100;
+    // Mike's value is now 100, because the second update overwrites the first one.
+
+    // find() returns an iterator.
+    // end() means "not found" when compared with find().
+    // end() is a past-the-last marker, not a real element.
+    if (student.find("Mike") != student.end()) {
+        cout << "WooHOO!\n";
+    }
+
+    student.erase("Mike");
+    student.clear(); // removes all key-value pairs
+
+    if (student.empty()) {
+        cout << "GG\n";
+    }
+}
+
 int main(){
     demo_string();
     demo_vector();
+    demo_hashmaps();
+
+    // iostream
+    cout << boolalpha; // a switch to print true/false instead of 1/0
+
 
     cout << endl; // flush the output, this may slow down process. not necessary.
     cout << '\n' << flush; // same as above

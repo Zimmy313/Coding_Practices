@@ -1,12 +1,10 @@
 # Coding_Practices
 
-This repository contains my personal solutions to various **LeetCode** problems.  
+This repository contains my personal solutions to various algorithm problems.  
 I primarily work with:
 
-- **SQL** – for database query problems  
-- **Python** – for algorithms and data manipulation using **pandas**  
-- **C** – for low-level, performance-focused problems  
-- **CPP**
+- Python
+- Cpp (stopped for now, focusing on python)
 
 ## Update Schedule
 The repository is **usually updated weekly** with new solutions and improvements.
@@ -15,9 +13,7 @@ The repository is **usually updated weekly** with new solutions and improvements
 Each folder is organized by language and problem type:
 
 - `Python/`     → Algorithm and Pandas solutions in Python  
-- `C/`          → Algorithm solutions in C 
-- `Cpp/`        → Algorithm solutions in Cpp 
-- `SQL/`        → SQL query solutions 
-- `Revise/`     → Interesting or tricky questions I plan to revisit  
+- `Cpp/`        → Algorithm solutions in Cpp
+- `Neetcode/`   → List of question found on Neetcode
 - `cheatsheet/` → Quick-reference files for **C**, **Cpp**, **Python**, and **SQL** built-in/common functions  
 - `nameConverter.py` → Helper script for file naming  

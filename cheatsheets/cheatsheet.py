@@ -29,6 +29,7 @@ s.replace("Lee", "L33t")  # Replace substring -> "L33tCode123"
 nums = [3, 1, 4, 1, 5]
 
 nums.append(9)        # Add element to end -> [3,1,4,1,5,9]
+nums.extend(1,2)      # Append can only add one element at once but extend can have multiplex
 nums.insert(2, 10)    # Insert at index -> [3,1,10,4,1,5,9]
 nums.pop()            # Remove last element -> returns 9
 nums.pop(2)           # Remove at index -> returns 10
