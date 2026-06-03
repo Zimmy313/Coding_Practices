@@ -23,6 +23,9 @@ s.find("e")           # Return index of first occurrence -> 1
 s.rfind("e")          # Return index of last occurrence -> 2
 s.replace("Lee", "L33t")  # Replace substring -> "L33tCode123"
 
+# eg
+strs = [s.strip().strip("'").strip('"') for s in input("Please input strs:\n").split(",")]
+
 # =====================================
 # List Operations
 # =====================================
@@ -60,6 +63,7 @@ s1.symmetric_difference(s2)  # XOR -> elements in one set but not both
 # Dictionary Operations
 # =====================================
 d = {"a": 1, "b": 2}
+d2 = {"a":1, "B" : 2}
 
 d.keys()              # Return all keys
 d.values()            # Return all values
@@ -68,6 +72,8 @@ d.get("a", 0)         # Get value with default if key not found -> 1
 d.pop("a")            # Remove key and return value
 d.popitem()           # Remove last inserted key-value pair
 d.update({"c": 3})    # Update dictionary with another dict
+
+d == d2               # compares all key:value pairs
 
 # Dictionary comprehension
 squares = {x: x*x for x in range(5)}  # {0:0, 1:1, 2:4, 3:9, 4:16}
@@ -145,3 +151,31 @@ n = map()  # applied a specified function for each item in an iterable.
 line = sys.stdin.readline() # reads one line, keeps trailing \n
 text = sys.stdin.read()     # reads everything until EOF
 lines = sys.stdin.readlines() # reads all lines into a list
+
+# =====================================
+# eval / ast.literal_eval
+# =====================================
+import ast
+
+text = '["act", "cat", "dog"]'
+
+eval(text)                 # Converts string into Python object, but can execute code. Avoid for user input.
+ast.literal_eval(text)     # Safely converts string into Python literal -> ["act", "cat", "dog"]
+
+# Common safe literals:
+ast.literal_eval("[1, 2, 3]")          # -> [1, 2, 3]
+ast.literal_eval("{'a': 1, 'b': 2}")   # -> {'a': 1, 'b': 2}
+ast.literal_eval("('a', 'b')")         # -> ('a', 'b')
+ast.literal_eval("'hello'")            # -> "hello"
+
+# Does not execute functions or arbitrary code:
+# ast.literal_eval("print('hello')")   # Error
+
+# For LeetCode-style input: use it when input is a python style object 
+strs = ast.literal_eval(input("Please input strs as a list:\n"))
+# input: ["act","pots","tops","cat","stop","hat"]
+# result: ["act", "pots", "tops", "cat", "stop", "hat"]
+
+# Rule:
+# eval() runs Python code, unsafe for user input
+# ast.literal_eval() only parses normal Python values, safer
