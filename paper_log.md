@@ -16,6 +16,25 @@
 
 ## Entries
 
+### [Week X] TEMPLATE (XXXX)
+**Date read:** 
+**Block:** Block X — 
+**Link:** [arxiv]()
+
+**Problem it solves** 
+> 
+
+**5 key bullets**
+1. 
+
+**One limitation or open question**
+>
+> 
+**Connection**
+> 
+
+**Confidence:** `Okay`
+
 ### [Week 1] BERT (2018)
 **Date read:** 27 May 2026
 **Block:** Block 1 — Transformer Foundations
@@ -72,6 +91,29 @@
 
 
 --- 
+
+### [Week ] GPT-3
+**Date read:** 5/6/2026
+**Block:** Block 1 — Transformer Foundations
+**Link:** [arxiv](https://arxiv.org/abs/2005.14165)
+
+**Problem it solves** 
+> GPT-3 extends GPT-2 by studying whether a much larger autoregressive language model can perform downstream NLP tasks without task-specific fine-tuning. It evaluates the model under zero-shot, one-shot, and few-shot settings, where tasks are specified only through natural-language prompts and/or examples in the context.
+
+**5 key bullets**
+1. Training use sparse transformer  ([arxiv](https://arxiv.org/abs/1904.10509)) in addition to what is introduced in GPT-2
+   1. In usual self-attention, each token attend to all other token. In sparse transformer, each token attend to selected other tokens. Reduce time complexity.
+   2. Larger model can train on a large batch size but a smaller learning rate.
+2. Larger model enables **in-context learning**. By providing a few example in the prompt, the performance of the model is improved considerably without changing gradients.
+3. Performance improves with model scale across many tasks, especially in few-shot settings, but GPT-3 still struggles on some reasoning, factual, symbolic, and domain-specific tasks.
+
+**One limitation or open question**
+> For some benchmarks, GPT-3 is performing worse than fine-tuned model with few-shot learning. Will further increasing parameters help?
+
+**Connection**
+> GPT-3 extends GPT-2's zero-shot language-modeling idea into a systematic study of in-context learning. GPT-2 showed that language models can perform some tasks from natural-language context; GPT-3 shows that scaling greatly improves this ability, especially when the prompt includes a few examples.
+
+**Confidence:** `Solid`
 
 ## Questions
 > what is the difference between encoder and decoder archetecure in terms of functionality. Why GPT uses only decoder?
