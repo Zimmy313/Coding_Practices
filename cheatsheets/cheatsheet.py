@@ -1,6 +1,9 @@
 # =====================================
 # String Manipulation
 # =====================================
+
+## String in python is non-mutable. Repeated concatenation often result in O(n^2)
+
 s = "LeetCode123"
 
 s.isupper()           # Check if all characters are uppercase -> False
