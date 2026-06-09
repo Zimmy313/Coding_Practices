@@ -35,10 +35,10 @@
 
 **Confidence:** `Okay`
 
-### [Week 1] BERT (2018)
+### [Week 1] [BRET](https://arxiv.org/abs/1810.04805) (2018)
 **Date read:** 27 May 2026
+
 **Block:** Block 1 — Transformer Foundations
-**Link:** [arxiv](https://arxiv.org/abs/1810.04805)
 
 **Problem it solves** 
 > Addresss unidirectional pretraining by using bidirectional encoder representation. Previous work like ELMo was a shallow concatenation of left and right attention.
@@ -61,10 +61,10 @@
 
 **Confidence:** `Okay`
 
-### [Week 2] GPT-1 & GPT-2
+### [Week 2] [GPTs](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf)
 **Date read:** 3 June 2026
+
 **Block:** Block 1 — Transformer Foundations
-**Link:** [paper](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf)
 
 **Problem it solves** 
 > GPT-1 shows that a Transformer language model can first be trained on large unlabeled text using a language modelling
@@ -92,10 +92,9 @@
 
 --- 
 
-### [Week ] GPT-3
+### [Week 2] [GPT-3](https://arxiv.org/abs/2005.14165)
 **Date read:** 5/6/2026
 **Block:** Block 1 — Transformer Foundations
-**Link:** [arxiv](https://arxiv.org/abs/2005.14165)
 
 **Problem it solves** 
 > GPT-3 extends GPT-2 by studying whether a much larger autoregressive language model can perform downstream NLP tasks without task-specific fine-tuning. It evaluates the model under zero-shot, one-shot, and few-shot settings, where tasks are specified only through natural-language prompts and/or examples in the context.
@@ -115,6 +114,42 @@
 
 **Confidence:** `Solid`
 
+### [Week 3] [Chinchilla](https://arxiv.org/abs/2203.15556)
+**Date read:9/6/2026** 
+
+**Block:** Block 1 - Transformer Foundations
+
+**Problem it solves** 
+> Investigate the scaling of LLM in correspondence to the size of training tokens as proposed by [Kaplan et al.](https://arxiv.org/abs/2001.08361).
+
+**5 key bullets**
+1. In contrast to Kaplan's result, parameter count should scale with training size roughly equally.
+   1. $N \propto C^a, D \propto C^b$
+      1. This paper suggest $\approx$ 0.5 for both while keplan suggest a = 0.73 and b = 0.27.
+   2. Kaplan's result fixes the learning rate while this paper doesn't. That may be one of the [cause](https://arxiv.org/abs/2406.12907) for the discrepancy.
+2. The paper proposed 3 different experiment approches were proposed:
+   1. Fix the model size. Increasing the amount of training token until performance stops improving.
+   2. Fix the compute power. Incresing the model size until performance stops improving. The size of training token make up of the rest of the spare compute power.
+   3. Parametric fitting.
+      1. $L(N,D) = E + \frac{A}{N^\alpha} + \frac{B}{D^\beta}$, where N is the parameter count while D is the training token.
+         1. The first term captures the irreducible loss. Not removable by scaling
+         2. The second term captures the loss due to model size. If N increases, this term is smaller.
+         3. The third term captures the loss due to data size. If D increases, this term is smaller. 
+         4. A, B, $\alpha$, $\beta$ are constants
+         5. This is optimised s.j to constraint $C \approx 6ND$ from [Keplan et al.](https://arxiv.org/abs/2001.08361)
+3. The three approches agrees with one another approximately although the third approach suggest a slightly smaller model with more training data size. However, they all points out that the model at that points are undertrained.
+4. Chinchilla that uses the same compute power as Gopher but with a smaller N and bigger D performs much better than Gopher.
+5. The final result suggest that one parameter $\approx$ 20 training tokens.([a result that is not strictly followed. Meta then published smaller model trained on even more data and performance continue to increase](https://aiwiki.ai/wiki/chinchilla_scaling))
+
+**One limitation or open question**
+> The last approch did not fully agree with the first two. It is suggesting even more training data for the same model size. 
+
+**Connection**
+> In contrast to increasing the model size blindly, a better optimal should be found. Smaller model not only reduce memory, training, but also inference cost.
+
+**Confidence:** `Okay`. You may want to read up section D.2. if the derivation of the loss function is important. Currently skipped. 
+
+
 ## Questions
 > what is the difference between encoder and decoder archetecure in terms of functionality. Why GPT uses only decoder?
 
@@ -129,3 +164,32 @@ Decoder:
 - Only knows the previous/past words and predict the next one.
 - Mordern GPT's are almost exclusively decoder only.
 - Scales much better.
+
+
+## Miscellaneous 
+
+### Cosine learning rate scheduling
+
+Instead of keeping the learning rate constant, you gradually reduce it following a smooth cosine curve, e.g.:
+
+
+$$
+\eta_t = \eta_{\min} + \frac{1}{2}(\eta_{\max} - \eta_{\min})
+\left(1 + \cos\left(\frac{\pi t}{T}\right)\right)
+$$
+
+where:
+- $\eta_t$: learning rate at step $t$
+- $\eta_{\max}$: initial or peak learning rate
+- $\eta_{\min}$: minimum learning rate
+- $t$: current training step
+- $T$: total training steps
+
+### Smoothing of training curve
+
+Emperical results can be noisy. Smoothing averages nearby points so that curve becomes easier to read.
+There are several ways such as:
+
+- moving average
+- exponential moving average
+- gaussian smoothing
