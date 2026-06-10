@@ -155,6 +155,24 @@ line = sys.stdin.readline() # reads one line, keeps trailing \n
 text = sys.stdin.read()     # reads everything until EOF
 lines = sys.stdin.readlines() # reads all lines into a list
 
+# example: reading in a matrix
+
+# 12..3....
+# 4..5.....
+# .98.....3
+# 5...6...4
+# ...8.3..5
+# 7...2...6
+# ......2..
+# ...419..8
+# ....8..79
+
+# this can be done using 
+board = list()
+for i in range(9):
+    row = list(input()) # input gets a whole string which is an iterable. list() then turns each char in the str to a list element. 
+    board.append(row)
+
 # =====================================
 # eval / ast.literal_eval
 # =====================================
@@ -178,6 +196,14 @@ ast.literal_eval("'hello'")            # -> "hello"
 strs = ast.literal_eval(input("Please input strs as a list:\n"))
 # input: ["act","pots","tops","cat","stop","hat"]
 # result: ["act", "pots", "tops", "cat", "stop", "hat"]
+
+# e.g. reading in a matrix directly
+# [["1","2",".",".","3",".",".",".","."],
+#  ["4",".",".","5",".",".",".",".","."]
+# ]
+
+s = input()
+board = ast.literal_eval(s)
 
 # Rule:
 # eval() runs Python code, unsafe for user input
