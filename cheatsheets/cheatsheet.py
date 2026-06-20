@@ -103,8 +103,9 @@ zip([1, 2], ['a', 'b'])  # -> [(1, 'a'), (2, 'b')]
 sum([1, 2, 3])           # Sum -> 6
 any([False, True, False]) # True if any element is True
 all([True, True, True])   # True if all elements are True
-sorted([3,1,2])           # -> [1,2,3]
+sorted([3,1,2])           # -> [1,2,3], return a new sorted object
 reversed([1,2,3])         # Reverse iterator
+nums.sort(key = lambda nums:nums[0], reverse=True)        # sort in place. key needs a function
 
 # =====================================
 # Heap / Priority Queue
