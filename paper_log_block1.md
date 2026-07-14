@@ -18,8 +18,8 @@
 
 ### [Week X] TEMPLATE (XXXX)
 **Date read:** 
-**Block:** Block X — 
-**Link:** [arxiv]()
+
+**Block:** Block 1 - Transformer Foundations
 
 **Problem it solves** 
 > 
@@ -120,7 +120,7 @@
 **Block:** Block 1 - Transformer Foundations
 
 **Problem it solves** 
-> Investigate the scaling of LLM in correspondence to the size of training tokens as proposed by [Kaplan et al.](https://arxiv.org/abs/2001.08361).
+> Investigate how to allocate a fixed training compute budget between model size and training tokens. The paper challenges the previous study on scaling done by [Kaplan et al.](https://arxiv.org/abs/2001.08361).
 
 **5 key bullets**
 1. In contrast to Kaplan's result, parameter count should scale with training size roughly equally.
@@ -136,10 +136,10 @@
          2. The second term captures the loss due to model size. If N increases, this term is smaller.
          3. The third term captures the loss due to data size. If D increases, this term is smaller. 
          4. A, B, $\alpha$, $\beta$ are constants
-         5. This is optimised s.j to constraint $C \approx 6ND$ from [Keplan et al.](https://arxiv.org/abs/2001.08361)
+         5. This is optimised s.t. to constraint $C \approx 6ND$ from [Keplan et al.](https://arxiv.org/abs/2001.08361)
 3. The three approches agrees with one another approximately although the third approach suggest a slightly smaller model with more training data size. However, they all points out that the model at that points are undertrained.
 4. Chinchilla that uses the same compute power as Gopher but with a smaller N and bigger D performs much better than Gopher.
-5. The final result suggest that one parameter $\approx$ 20 training tokens.([a result that is not strictly followed. Meta then published smaller model trained on even more data and performance continue to increase](https://aiwiki.ai/wiki/chinchilla_scaling))
+5. A useful rule of thumb from Chinchilla is: $D \approx 20N$, meaning around 20 training tokens per parameter for compute-optimal training. This should be treated as an empirical guideline under the paper's assumptions, not a universal law. ([a result that is not strictly followed. Meta then published smaller model trained on even more data and performance continue to increase](https://aiwiki.ai/wiki/chinchilla_scaling))
 
 **One limitation or open question**
 > The last approch did not fully agree with the first two. It is suggesting even more training data for the same model size. 
@@ -148,6 +148,25 @@
 > In contrast to increasing the model size blindly, a better optimal should be found. Smaller model not only reduce memory, training, but also inference cost.
 
 **Confidence:** `Okay`. You may want to read up section D.2. if the derivation of the loss function is important. Currently skipped. 
+
+### [Week X] [FlashAttention](https://arxiv.org/abs/2205.14135)
+**Date read:** 
+
+**Block:** Block 1 — Transformer Foundations
+
+**Problem it solves** 
+> 
+
+**5 key bullets**
+1. 
+
+**One limitation or open question**
+>
+> 
+**Connection**
+> 
+
+**Confidence:** 
 
 
 ## Questions
