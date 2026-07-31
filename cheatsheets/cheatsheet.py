@@ -105,7 +105,7 @@ any([False, True, False]) # True if any element is True
 all([True, True, True])   # True if all elements are True
 sorted([3,1,2])           # -> [1,2,3], return a new sorted object
 reversed([1,2,3])         # Reverse iterator
-nums.sort(key = lambda nums:nums[0], reverse=True)        # sort in place. key needs a function
+nums.sort(key = lambda nums:nums[0], reverse=True) # sort in place in ascending order. key needs a function
 
 # =====================================
 # Heap / Priority Queue
