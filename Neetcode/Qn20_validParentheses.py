@@ -21,7 +21,7 @@ class Solution:
                 if pairs[top] != char:
                     return False
 
-        return len(stack) == 0
+        return len(stack) == 0 # catch missing parenthesis. cant just return true
 
 
                 
