@@ -118,6 +118,9 @@ heapq.heappush(heap, 2)
 heapq.heappop(heap)       # Pop smallest element -> 1
 heapq.heapify(heap)       # Turn list into a heap
 
+# Note this module can only compare arithematic and not classes directly
+# a walk around is to use a tuple in the second arguement of heappush
+
 # =====================================
 # Collections
 # =====================================
