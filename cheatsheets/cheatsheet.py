@@ -110,6 +110,9 @@ nums.sort(key = lambda nums:nums[0], reverse=True) # sort in place in ascending 
 # =====================================
 # Heap / Priority Queue
 # =====================================
+
+# this module implements a min heap. min is a heap[0]
+
 import heapq
 heap = []
 heapq.heappush(heap, 3)   # Add element
