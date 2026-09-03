@@ -65,6 +65,9 @@ s1.symmetric_difference(s2)  # XOR -> elements in one set but not both
 # =====================================
 # Dictionary Operations
 # =====================================
+# Dict and list can be modified out of the current functino scope(no need nonlocal)
+# Assignment does not work
+
 d = {"a": 1, "b": 2}
 d2 = {"a":1, "B" : 2}
 
