@@ -1,75 +1,4 @@
 # =====================================
-# Scope / Variable Passing
-# =====================================
-
-# Python resolves variable names using LEGB:
-# Local -> Enclosing -> Global -> Built-in
-
-x = 1                       # Global scope
-
-def outer():
-    x = 2                   # Enclosing scope
-
-    def inner():
-        x = 3               # Local scope
-
-# Inner functions can READ variables from enclosing scope directly.
-# To REASSIGN an enclosing variable, use nonlocal.
-# To REASSIGN a global variable, use global.
-
-def outer():
-    count = 0
-
-    def dfs():
-        nonlocal count
-        count += 1
-
-# Mutable objects (list/dict/set) can be modified without nonlocal
-# because the variable itself is not reassigned.
-
-def outer():
-    nums = []
-
-    def dfs():
-        nums.append(1)      # OK: modifies same list
-        # nums = [1]        # Reassignment -> creates local nums unless `nonlocal nums`
-
-# =====================================
-# Copying / References
-# =====================================
-
-# Passing an object to a function DOES NOT copy it.
-# The parameter becomes another reference to the same object -> O(1).
-
-nums = [1, 2, 3]
-
-def f(arr):
-    arr.append(4)           # Modifies original list
-
-f(nums)                     # nums -> [1,2,3,4]
-
-# Assignment also does NOT copy:
-a = nums                    # O(1), a and nums reference same list
-
-# Explicit operations such as slicing DO create new objects:
-a = nums[:]                 # O(n) new list
-a = nums[1:]                # O(n) new list
-a = list(nums)              # O(n) new list
-a = nums.copy()             # O(n) new list
-
-# Recursive function arguments also only pass references:
-def dfs(nums, i):
-    dfs(nums, i + 1)        # nums is NOT copied
-
-# Avoid slicing in recursion when O(n) copying matters:
-dfs(nums[1:])               # Creates a new list
-dfs(nums, i + 1)            # Pass same list + index, O(1) argument space
-
-# Key distinction:
-# Mutation      -> modifies existing object
-# Reassignment  -> makes variable name refer to another object
-
-# =====================================
 # String Manipulation
 # =====================================
 
@@ -253,6 +182,31 @@ board = list()
 for i in range(9):
     row = list(input()) # input gets a whole string which is an iterable. list() then turns each char in the str to a list element. 
     board.append(row)
+    
+# =====================================
+# functools.cache / Memoization
+# =====================================
+from functools import cache
+
+# @cache stores return values using ALL function arguments as the key.
+# Same arguments -> return cached result without executing function again.
+# Arguments must be hashable (e.g. int, str, tuple; not list/dict).
+
+@cache
+def dfs(amount):
+    if amount == 0:
+        return 0
+    ...
+
+dfs.cache_clear()           # Clear cached results
+dfs.cache_info()            # Show hits, misses, and cache size
+
+# @cache is equivalent to @lru_cache(maxsize=None).
+
+# Best used when function arguments exactly represent the DP/memo state.
+# dfs(amount, counter) -> cache key is (amount, counter)
+# If only amount determines the subproblem, prefer dfs(amount).
+# Use manual memo when the desired cache key differs from function arguments.
 
 # =====================================
 # eval / ast.literal_eval
@@ -289,3 +243,71 @@ board = ast.literal_eval(s)
 # Rule:
 # eval() runs Python code, unsafe for user input
 # ast.literal_eval() only parses normal Python values, safer
+
+
+# =====================================
+# Scope / Variable Passing
+# =====================================
+
+# Python resolves variable names using LEGB:
+# Local -> Enclosing -> Global -> Built-in
+
+x = 1                       # Global scope
+def outer():
+    x = 2                   # Enclosing scope
+    def inner():
+        x = 3               # Local scope
+
+# Inner functions can READ variables from enclosing scope directly.
+# To REASSIGN an enclosing variable, use nonlocal.
+# To REASSIGN a global variable, use global.
+
+def outer():
+    count = 0
+    def dfs():
+        nonlocal count
+        count += 1
+
+# Mutable objects (list/dict/set) can be modified without nonlocal
+# because the variable itself is not reassigned.
+
+def outer():
+    nums = []
+    def dfs():
+        nums.append(1)      # OK: modifies same list
+        # nums = [1]        # Reassignment -> creates local nums unless `nonlocal nums`
+
+# =====================================
+# Copying / References
+# =====================================
+
+# Passing an object to a function DOES NOT copy it.
+# The parameter becomes another reference to the same object -> O(1).
+
+nums = [1, 2, 3]
+
+def f(arr):
+    arr.append(4)           # Modifies original list
+
+f(nums)                     # nums -> [1,2,3,4]
+
+# Assignment also does NOT copy:
+a = nums                    # O(1), a and nums reference same list
+
+# Explicit operations such as slicing DO create new objects:
+a = nums[:]                 # O(n) new list
+a = nums[1:]                # O(n) new list
+a = list(nums)              # O(n) new list
+a = nums.copy()             # O(n) new list
+
+# Recursive function arguments also only pass references:
+def dfs(nums, i):
+    dfs(nums, i + 1)        # nums is NOT copied
+
+# Avoid slicing in recursion when O(n) copying matters:
+dfs(nums[1:])               # Creates a new list
+dfs(nums, i + 1)            # Pass same list + index, O(1) argument space
+
+# Key distinction:
+# Mutation      -> modifies existing object
+# Reassignment  -> makes variable name refer to another object
